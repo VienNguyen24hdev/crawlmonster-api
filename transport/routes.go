@@ -43,6 +43,13 @@ func Router(newRelicApp *newrelic.Application) http.Handler {
 			g.Writer.Write([]byte(loaderVerification))
 		})
 	}
+	v1 := router.Group("/v1/api")
+	{
+		v1.POST("/login", Login)
+		v1.POST("/register", Register)
+		v1.GET("/projects")
+
+	}
 
 	return router
 }
