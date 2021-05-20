@@ -47,7 +47,7 @@ func Router(newRelicApp *newrelic.Application) http.Handler {
 	{
 		v1.POST("/login", Login)
 		v1.POST("/register", Register)
-		v1.GET("/projects")
+		v1.GET("/projects", Projects)
 
 	}
 

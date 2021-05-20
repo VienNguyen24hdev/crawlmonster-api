@@ -3,7 +3,7 @@ services:
   go-api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     working_dir: /app
     command: CompileDaemon -log-prefix=false -build="make build" -command="./dist/api"
     volumes:
@@ -15,9 +15,11 @@ services:
   cron:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     working_dir: /app
     command: CompileDaemon -log-prefix=false -build="make buildcron" -command="/app/dist/cron"
     env_file: ./.env
     volumes:
       - .:/app
+  redis:
+    image: redis
